@@ -8,16 +8,19 @@ client.login(process.env.BOT_TOKEN).then();
 
 client.on('ready', () => {
 
-    channel = client.channels.fetch('824168638403182605').then( (channel) => {
-        console.log('Connected to ' + channel.name);
+    client.channels.fetch('824168638403182605').then( (c) => {
+        channel = c;
+        console.log('Connected to ' + c.name);
+        console.log('Channel type: ' + c.type);
     }).catch(console.error);
+    gooseServer = client.guilds.fetch('824168638403182602');
     console.log('Bot is ready');
-
+    initiate();
 });
 
 client.on('message', (msg) => {
-    if (msg.content == 'Honk') return msg.reply('Shut the fuck up you bird');
-    if (msg.content == 'POG') return msg.reply('Can I get some peepo pogchamps in here bitches')
+    if (msg.content == 'Honk') return msg.reply('Honk');
+    if (msg.content == 'POG') return msg.reply('Can I get some peepo pogchamps in here')
     try {
         if (msg.content.substring(0, 6) == '/clear') {
             const num = msg.content.split(' ').slice(1);
@@ -37,6 +40,11 @@ client.on('message', (msg) => {
     }
 });
 
-/* client.setInterval( () => {
-    channel.send('Automated message every second');
-}, 1000); */
+function initiate() {
+    client.setInterval( () => {
+        channel.send('Automated message');
+    }, 1000); 
+}
+function close() {
+    client.clearInterval();
+}

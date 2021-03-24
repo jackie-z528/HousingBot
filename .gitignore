@@ -1,1 +1,6 @@
+# Bot Key
 .env
+
+*.swp
+*.~
+*.swo
