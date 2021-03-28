@@ -2,7 +2,7 @@
   "name": "HousingBot",
   "version": "1.0.0",
   "description": "A discord bot to help get the newest listings on Facebook housing groups.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
